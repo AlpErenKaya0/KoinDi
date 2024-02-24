@@ -14,11 +14,14 @@ import com.alperen.koindi.model.CryptoModel
 import com.alperen.koindi.view.RecyclerViewAdapter
 import com.alperen.koindi.viewModel.CryptoViewModel
 
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class ListFragment : Fragment(), RecyclerViewAdapter.Listener {
 private var _binding:FragmentListBinding?=null
     private  var cryptoAdapter = RecyclerViewAdapter(arrayListOf(),this)
-    private lateinit var viewModel:CryptoViewModel
+    private val  viewModel by viewModel<CryptoViewModel>()
+
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +42,7 @@ private var _binding:FragmentListBinding?=null
         super.onViewCreated(view, savedInstanceState)
 val layoutManager= LinearLayoutManager(requireContext())
         binding.recyclerView.layoutManager = layoutManager
-viewModel = ViewModelProvider(this).get(CryptoViewModel::class.java)
+
         viewModel.getDataFromAPI()
 observeLiveData()
     }
