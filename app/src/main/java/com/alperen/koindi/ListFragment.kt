@@ -14,6 +14,7 @@ import com.alperen.koindi.model.CryptoModel
 import com.alperen.koindi.view.RecyclerViewAdapter
 import com.alperen.koindi.viewModel.CryptoViewModel
 
+
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
